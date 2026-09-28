@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidatos Page</title>
+    <link rel="stylesheet" th:href="@{./css/style.css}">
+</head>
+
+<header>
+    <h1>Perfil dos candidatos - Eleições 2026 - MG</h1>
+    <p>Filtre por gênero, escolaridade e feixa etária</p>
+</header>
+
+<body>
+    <form method="get" th:action="@{/}"></form>
+    <div>
+        <P>Gênero</P>
+        <label>
+            <input type="radio" name="genero" value="" th:checked="${generoSelecionado == ''}">
+            Todos
+        </label>
+        <label th:each="g : ${generos}">
+            <input type="radio" name="genero" th:value="${g}" th:checked="${g == generoSelecionado}">
+            <span th:text="${g}">Gênero</span>
+        </label>
+
+        <select name="escolaridade">
+            <option value="" th.selected="${escolaridadeSelecionada == ''}">Todas</option>
+            <option th:each="e : @{escolaridades}" th:value="${e}" th.text="${e}"
+                th.selected="${e == escolaridadeSelecionada}"></option>
+        </select>
+    </div>
+    <div class=" lista-candidatos">
+        <p class="resultado-info">
+            <strong th:text="${totalEncontrado}">0</strong> candidato(s) encontrado(s).
+        </p>
+    </div>
+</body>
+
+</html>

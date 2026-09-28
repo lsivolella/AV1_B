@@ -15,27 +15,30 @@
 
 <body>
     <form method="get" th:action="@{/}"></form>
-    <div>
-        <P>Gênero</P>
-        <label>
-            <input type="radio" name="genero" value="" th:checked="${generoSelecionado == ''}">
-            Todos
-        </label>
-        <label th:each="g : ${generos}">
-            <input type="radio" name="genero" th:value="${g}" th:checked="${g == generoSelecionado}">
-            <span th:text="${g}">Gênero</span>
-        </label>
+    <div class="layout">
+        <div>
+            <P>Gênero</P>
+            <label>
+                <input type="radio" name="genero" value="" th:checked="${generoSelecionado == ''}">
+                Todos
+            </label>
+            <label th:each="g : ${generos}">
+                <input type="radio" name="genero" th:value="${g}" th:checked="${g == generoSelecionado}">
+                <span th:text="${g}">Gênero</span>
+            </label>
 
-        <select name="escolaridade">
-            <option value="" th.selected="${escolaridadeSelecionada == ''}">Todas</option>
-            <option th:each="e : @{escolaridades}" th:value="${e}" th.text="${e}"
-                th.selected="${e == escolaridadeSelecionada}"></option>
-        </select>
-    </div>
-    <div class=" lista-candidatos">
-        <p class="resultado-info">
-            <strong th:text="${totalEncontrado}">0</strong> candidato(s) encontrado(s).
-        </p>
+            <select name="escolaridade">
+                <option value="" th.selected="${escolaridadeSelecionada == ''}">Todas</option>
+                <option th:each="e : @{escolaridades}" th:value="${e}" th.text="${e}"
+                    th.selected="${e == escolaridadeSelecionada}"></option>
+            </select>
+        </div>
+        <div class=" lista-candidatos">
+            <p class="resultado-info">
+                <strong th:text="${totalEncontrado}">0</strong> candidato(s) encontrado(s).
+            </p>
+        </div>
+
     </div>
 </body>
 

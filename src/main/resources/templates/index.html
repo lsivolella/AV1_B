@@ -33,10 +33,14 @@
                     th.selected="${e == escolaridadeSelecionada}"></option>
             </select>
         </div>
+        <p class="resultado-info">
+            <strong th:text="${totalEncontrado}">0</strong> candidato(s) encontrado(s).
+        </p>
+        <p th:if="${totalEncontrado == 0}" class="sem-resultado">
+            Nenhum candidato encontrado com esses filtros
+        </p>
         <div class=" lista-candidatos">
-            <p class="resultado-info">
-                <strong th:text="${totalEncontrado}">0</strong> candidato(s) encontrado(s).
-            </p>
+            <article class="card-candidato" th:each="cand : ${candidatos}"></article>
         </div>
 
     </div>
